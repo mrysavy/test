@@ -4,6 +4,10 @@ on:
   push:
   workflow_dispatch:
 
+defaults:
+  run:
+    shell: bash   # otherwise "set -o pipefail" is not set by GHA
+
 jobs:
   test:
     runs-on: ubuntu-latest
