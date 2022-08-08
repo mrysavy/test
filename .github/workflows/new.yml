@@ -1,0 +1,22 @@
+name: New
+
+on:
+  push:
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash   # otherwise "set -o pipefail" is not set by GHA
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: test
+        run: |
+          curl \
+            -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/mrysavy/test/actions/workflows/42/dispatches \
+            -d '{"ref":"main"}'
